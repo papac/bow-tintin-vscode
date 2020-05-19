@@ -1,0 +1,25 @@
+{
+    "name": "bow-tintin",
+    "displayName": "Bow Tintin",
+    "description": "This package adds syntax definitions for Bow Tintin engine (https://github.com/bowphp/tintin).",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.45.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "tintin",
+            "aliases": ["Bow Tintin", "tintin"],
+            "extensions": [".tintin.php"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "tintin",
+            "scopeName": "text.tintin",
+            "path": "./syntaxes/tintin.tmLanguage.json"
+        }]
+    }
+}
