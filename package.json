@@ -1,25 +1,41 @@
 {
     "name": "bow-tintin",
     "displayName": "Bow Tintin",
-    "description": "This package adds syntax definitions for Bow Tintin engine (https://github.com/bowphp/tintin).",
+    "description": "Bow Tintin Language Support (https://github.com/bowphp/tintin).",
     "version": "0.0.2",
+    "author": "Franck DAKIA",
+    "icon": "icons/bow.jpeg",
     "publisher": "papac",
+    "bugs": "https://github.com/papac/bow-tintin-vscode/issues",
+    "preview": true,
     "engines": {
         "vscode": "^1.45.0"
     },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/papac/bow-tintin-vscode.git"
+    },
     "categories": [
-        "Programming Languages"
+        "Programming Languages",
+        "Formatters",
+        "Snippets"
+    ],
+    "snippets": [
+        {
+          "language": "tintin",
+          "path": "./snippets/snippets.json"
+        }
     ],
     "contributes": {
         "languages": [{
             "id": "tintin",
             "aliases": ["Bow Tintin", "tintin"],
-            "extensions": [".tintin.php"],
+            "extensions": [".tintin.php", ".tintin"],
             "configuration": "./language-configuration.json"
         }],
         "grammars": [{
             "language": "tintin",
-            "scopeName": "text.tintin",
+            "scopeName": "text.html.php.tintin",
             "path": "./syntaxes/tintin.tmLanguage.json"
         }]
     }
