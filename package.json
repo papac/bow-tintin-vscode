@@ -2,12 +2,11 @@
     "name": "bow-tintin",
     "displayName": "Bow Tintin",
     "description": "Bow Tintin Language Support (https://github.com/bowphp/tintin).",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "author": "Franck DAKIA",
     "icon": "icons/bow.jpeg",
     "publisher": "papac",
     "bugs": "https://github.com/papac/bow-tintin-vscode/issues",
-    "preview": true,
     "engines": {
         "vscode": "^1.45.0"
     },
@@ -27,16 +26,20 @@
         }
     ],
     "contributes": {
-        "languages": [{
-            "id": "tintin",
-            "aliases": ["Bow Tintin", "tintin"],
-            "extensions": [".tintin.php", ".tintin"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "tintin",
-            "scopeName": "text.html.php.tintin",
-            "path": "./syntaxes/tintin.tmLanguage.json"
-        }]
+        "languages": [
+            {
+                "id": "tintin",
+                "aliases": ["Bow Tintin", "tintin"],
+                "extensions": [".tintin.php", ".tintin"],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "tintin",
+                "scopeName": "text.html.php.tintin",
+                "path": "./syntaxes/tintin.tmLanguage.json"
+            }
+        ]
     }
 }

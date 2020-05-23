@@ -1,49 +1,24 @@
 # Bow Tintin
 
-- [Introduction](#introduction)
-- [Usage](#usage)
-  - [Data display](#data-display)
-    - [Affichage des données non échappées](#affichage-des-donn%c3%a9es-non-%c3%a9chapp%c3%a9es)
-  - [Add a comment](#add-a-comment)
-  - [#if / #elseif or #elif / #else](#if--elseif-or-elif--else)
-  - [#unless](#unless)
-  - [#loop / #for / #while](#loop--for--while)
-    - [Using #loop](#using-loop)
-    - [Syntax sugars #jump and #stop](#syntax-sugars-jump-and-stop)
-    - [Using #for](#using-for)
-    - [Using #while](#using-while)
-  - [Include of file](#include-of-file)
-    - [Example of inclusion](#example-of-inclusion)
-- [Inherit with #extends, #block and #inject](#inherit-with-extends-block-and-inject)
-  - [Explication](#explication)
-- [Contribution](#contribution)
-- [Author](#author)
-
 ## Introduction
 
-Tintin est un template PHP qui se veut très simple et extensible. Il peut être utilisable dans n'importe quel projet PHP.
-
-| paramêtre | Description |
-|---------|-------------|
-| __php__ | The path to the views folder of your applications |
-| __extension__ | the extension of the template files. By default, the value is `tintin.php` |
-| __cache__ | The cache folder. This is where `tintin` will create the cache. If it is not set, `tintin` will cache the compiled files in the temporary `php` directory. |
+Tintin is a PHP template that wants to be very simple and extensible. It can be used in any PHP project.
 
 ### Data display
 
-Vous pouvez afficher le contenu de la variable name de la manière suivante:
+You can display the contents of the name variable as follows:
 
 ```c
 Hello, {{ $name }}.
 ```
 
-Bien entendu, vous n'êtes pas limité à afficher le contenu des variables transmises à la vue. Vous pouvez également faire écho aux résultats de toute fonction PHP. En fait, vous pouvez insérer n'importe quel code PHP dans une instruction echo Blade:
+Of course, you are not limited to displaying the content of the variables passed to the view. You can also echo the results of any PHP function. In fact, you can insert any PHP code into an Tintin echo statement:
 
 ```html
 Hello, {{ strtoupper($name) }}.
 ```
 
-> Les instructions Tintin `{{}}` sont automatiquement envoyées via la fonction PHP `htmlspecialchars` pour empêcher les attaques XSS.
+> Tintin instructions `{{ }}` are automatically sent via the PHP function `htmlspecialchars` to prevent XSS attacks.
 
 #### Affichage des données non échappées
 
@@ -251,4 +226,4 @@ Or go to the [issues](https://github.com/bowphp/tintin/issues) page, make your c
 
 Contact: [dakiafranck@gmail.com](mailto:dakiafranck@gmail.com) - [@franck_dakia](https://twitter.com/franck_dakia)
 
-**Please, if there is a bug on the project please contact me by email or leave me a message on the [slack](https://bowphp.slack.com).**
+<a href="https://www.buymeacoffee.com/iOLqZ3h" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-black.png" alt="Buy Me A Coffee" style="height: 30px !important; width: 150px !important;" ></a>

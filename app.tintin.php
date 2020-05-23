@@ -1,0 +1,30 @@
+#extends("layout")
+
+#block("title", "The page title")
+
+#block("content")
+
+	#if(true)
+		// Do Something
+	#endif
+
+	#loop($users as $user)
+		{{ $user->name }}
+	#endloop
+
+	{# comment #}
+
+	#white(true)
+		// Do Somethink
+	#endwhile
+
+	#for($i = 0; $i < 0; $i++)
+		// Do Somethink
+	#endfor
+
+	#unless(false)
+		// Do Somethink
+	#endunless
+#endblock
+
+avvwso2qtm54bw7wltteqlsg7txrpn6uazgm5t5xqka7zeqypw5q
