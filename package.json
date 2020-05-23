@@ -3,6 +3,7 @@
     "displayName": "Bow Tintin",
     "description": "This package adds syntax definitions for Bow Tintin engine (https://github.com/bowphp/tintin).",
     "version": "0.0.1",
+    "publisher": "papac",
     "engines": {
         "vscode": "^1.45.0"
     },
