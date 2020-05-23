@@ -1,10 +1,7 @@
 # Bow Tintin
 
 - [Introduction](#introduction)
-- [Installation](#installation)
-  - [Configuration](#configuration)
 - [Usage](#usage)
-  - [Configuration for Bow](#configuration-for-bow)
   - [Data display](#data-display)
     - [Affichage des données non échappées](#affichage-des-donn%c3%a9es-non-%c3%a9chapp%c3%a9es)
   - [Add a comment](#add-a-comment)
@@ -19,12 +16,6 @@
     - [Example of inclusion](#example-of-inclusion)
 - [Inherit with #extends, #block and #inject](#inherit-with-extends-block-and-inject)
   - [Explication](#explication)
-- [Personalized directive](#personalized-directive)
-  - [Example](#example)
-  - [Use of directives](#use-of-directives)
-  - [Compilation du template](#compilation-du-template)
-  - [Output after compilation](#output-after-compilation)
-  - [Add your configuration guidelines](#add-your-configuration-guidelines)
 - [Contribution](#contribution)
 - [Author](#author)
 
@@ -32,91 +23,11 @@
 
 Tintin est un template PHP qui se veut très simple et extensible. Il peut être utilisable dans n'importe quel projet PHP.
 
-## Installation
-
-To install the package it will be better to use `composer` who is `php` package manager.
-
-```bash
-composer require bowphp/tintin
-```
-
-### Configuration
-
-You can use the package simply, like this. But except that this way of doing does not allow to exploit the inheritance system in an optimal way. Use this way of doing things, only if you want to test the package or for small applications.
-
-```php
-require 'vendor/autoload.php';
-
-$tintin = new Tintin\Tintin;
-
-echo $tintin->render('Hello, world {{ strtoupper($name) }}', ['name' => 'tintin']);
-// -> Hello, world TINTIN
-```
-
-To use the package properly, you must rather follow the installation that follows:
-
-```php
-require 'vendor/autoload.php';
-
-$loader = new Tintin\Loader\Filesystem([
-  'path' => '/path/to/the/views/source',
-  'extension' => 'tintin.php',
-  'cache' => '/path/to/the/cache/directory'
-]);
-
-$tt = new Tintin\Tintin($loader);
-```
-
 | paramêtre | Description |
 |---------|-------------|
 | __php__ | The path to the views folder of your applications |
 | __extension__ | the extension of the template files. By default, the value is `tintin.php` |
 | __cache__ | The cache folder. This is where `tintin` will create the cache. If it is not set, `tintin` will cache the compiled files in the temporary `php` directory. |
-
-## Usage
-
-```php
-// Configuration made previously
-$tt = new Tintin\Tintin($loader);
-
-$tt->render('filename', ['name' => 'data']);
-// Ou
-$tt->render('dossier/filename', ['name' => 'data']);
-// Ou
-$tt->render('dossier.filename', ['name' => 'data']);
-```
-
-> Note that the source of the files is always the path to `path`.
-
-### Configuration for Bow
-
-To allow Bow to use Tintin as default template engine, he will need to make some small configuration.
-
-Add this configuration to the file `app/Kernel/Loader.php`:
-
-```php
-public function configurations() {
-  return [
-    ...
-    \Tintin\Bow\TintinConfiguration::class,
-    ...
-  ];
-}
-```
-
-And again in the configuration file views located in `config/view.php`.
-
-```php
-return [
-  // Define the engine to use
-  'engine' => 'tintin',
-
-  // Extension de fichier
-  'extension' => 'tintin.php'
-];
-```
-
-And that's it, now your default template engine is `tintin`: +1:
 
 ### Data display
 
@@ -306,7 +217,7 @@ And also, we have another file that inherits the code of the file `layout.tintin
 
 The `content.tintin.php` file will inherit the code from` layout.tintin.php` and if you mark it well, in the file `layout.tintin.php` we have the clause `#inject` which has as parameter the name of `content.tintin.php` `block` which is `content`. Which means that the content of `# block` `content` will be replaced by `#inject`. Which will give in the end this:
 
-```htnl
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -320,122 +231,6 @@ The `content.tintin.php` file will inherit the code from` layout.tintin.php` and
   <p>Page footer</p>
 </body>
 </html>
-```
-
-## Personalized directive
-
-Tintin can be expanded with its custom directive system, to do this used the method `directive`
-
-```php
-$tintin->directive('hello', function (array $attributes = []) {
-  return 'Hello, '. $attributes[0];
-});
-
-echo $tintin->render('#hello("Tintin")');
-// => Hello, Tintin
-```
-
-### Example
-
-Creating a directive to manage a form:
-
-```php
-$tintin->directive('input', function (array $attributes = []) {
-  $attribute = $attributes[0];
-
-  return '<input type="'.$attribute['type'].'" name="'.$attribute['name'].'" value="'.$attribute['value'].'" />';
-});
-
-$tintin->directive('textarea', function (array $attributes = []) {
-  $attribute = $attributes[0];
-
-  return '<textarea name="'.$attribute['name'].'">"'.$attribute['value'].'"</textarea>';
-});
-
-$tintin->directive('button', function (array $attributes = []) {
-  $attribute = $attributes[0];
-
-  return '<button type="'.$attribute['type'].'">'.$attribute['label'].'"</button>';
-});
-
-$tintin->directive('form', function (array $attributes = []) {
-  $attribute = " ";
-  
-  if (isset($attributes[0])) {
-    foreach ($attributes[0] as $key => $value) {
-      $attribute .= $key . '="'.$value.'" ';
-    }
-  }
-
-  return '<form "'.trim($attribute).'">';
-});
-
-$tintin->directive('endform', function (array $attributes = []) {
-  return '</form>';
-});
-```
-
-### Use of directives
-
-To use these guidelines, nothing is easier. Write the name of the directive preceded by `#`. Then if this directive takes parameters, launch the directive as you run the functions in your program. The parameters will be grouped in the `$attributes` varibles in the added order.
-
-```c
-// File form.tintin.php
-#form(['method' => 'post', "action" => "/posts", "enctype" => "multipart/form-data"])
-  #input(["type" => "text", "value" => null, "name" => "name"])
-  #textarea(["value" => null, "name" => "content"])
-  #button(['type' => 'submit', 'label' => 'Add'])
-#endform
-```
-
-### Compilation du template
-
-The compilation is done as usual, for more information on the [compilation](#use).
-
-```php
-echo $tintin->render('form');
-```
-
-### Output after compilation
-
-```html
-<form action="/posts" method="post" enctype="multipart/form-data">
-  <input type="text" name="name" value="" />
-  <textarea name="content"></textarea>
-  <button type="submit">Add</button>
-</form>
-```
-
-### Add your configuration guidelines
-
-In case you use the Tintin configuration for Bow Framework.
-
-You can create a class in the `app` folder, for example, with the name `CustomTintinConfiguration` which will extend Tintin's default configuration that is `\Tintin\Bow\TintinConfiguration::class` and then modify the `onRunning` method.
-
-```php
-use Tintin\Tintin;
-
-class CustomTintinConfiguration extends \Tintin\Bow\TintinConfiguration
-{
-  /**
-   * Add action in tintin
-   *
-   * @param Tintin $tintin
-   */
-  public function onRunning(Tintin $tintin)
-  {
-    $tintin->directive('super', function (array $attributes = []) {
-      return "Super !";
-    });
-  }
-}
-```
-
-Now the `#super` directive is available and you can use it.
-
-```php
-  return $tintin->render('#super');
-  // => Super !
 ```
 
 ## Contribution
