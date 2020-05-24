@@ -13,6 +13,9 @@
 	#endloop
 
 	{# comment #}
+	#if (true)
+		// Do Something
+	#endif
 
 	#white(true)
 		// Do Somethink
@@ -26,5 +29,3 @@
 		// Do Somethink
 	#endunless
 #endblock
-
-avvwso2qtm54bw7wltteqlsg7txrpn6uazgm5t5xqka7zeqypw5q

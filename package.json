@@ -2,7 +2,7 @@
     "name": "bow-tintin",
     "displayName": "Bow Tintin",
     "description": "Bow Tintin Language Support (https://github.com/bowphp/tintin).",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "author": "Franck DAKIA",
     "icon": "icons/bow.jpeg",
     "publisher": "papac",
@@ -37,7 +37,7 @@
         "grammars": [
             {
                 "language": "tintin",
-                "scopeName": "text.html.php.tintin",
+                "scopeName": "js.text.html.php.tintin",
                 "path": "./syntaxes/tintin.tmLanguage.json"
             }
         ]
