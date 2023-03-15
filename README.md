@@ -2,8 +2,6 @@
 
 Bow Tintin snippets and syntax highlighting support for Visual Studio Code.
 
-> Suggest to install Bow related extension: [Bow Tintin Snippets](https://marketplace.visualstudio.com/items?itemName=papac.bow-tintin)
-
 ## User Settings
 
 Open `Preferences` -> `Settings`
