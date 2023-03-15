@@ -1,0 +1,103 @@
+{
+  "Extend layout": {
+    "prefix": "t:extends",
+    "body": "#extends('${1:name}')",
+    "description": "#extends view layout"
+  },
+  "Block layout": {
+    "prefix": "t:block",
+    "body": [
+      "#block('${1:name}')",
+      "    $2",
+      "#endblock"
+    ],
+    "description": "block view layout"
+  },
+  "Include view": {
+    "prefix": "t:include",
+    "body": "#include('${1:name}', [])",
+    "description": "#include view"
+  },
+  "If-block": {
+    "prefix": "t:if",
+    "body": [
+      "#if ($1)",
+      "    $2",
+      "#endif"
+    ],
+    "description": "#if block"
+  },
+  "If-else-block": {
+    "prefix": "t:if-else",
+    "body": [
+      "#if ($1)",
+      "    $2",
+      "#else",
+      "    $3",
+      "#endif"
+    ],
+    "description": "if-else block"
+  },
+  "Unless": {
+    "prefix": "t:unless",
+    "body": [
+      "#unless (\\$name == $1)"
+    ],
+    "description": "#unless block"
+  },
+  
+  /* Loops */
+  "For-block": {
+    "prefix": "t:for",
+    "body": [
+      "#for (\\$i = ${1:0}; \\$i < ${2:\\$count}; \\$i++)",
+      "    $3",
+      "#endfor"
+    ],
+    "description": "#for block"
+  },
+  "while-block": {
+    "prefix": "t:while",
+    "body": [
+      "#while ($1)",
+      "    $2",
+      "#endwhile"
+    ],
+    "description": "#while block"
+  },
+  "tintin comment": {
+    "prefix": "t:comment",
+    "body": "{# ${1:comment} #}",
+    "description": "comment block"
+  },
+  "tintin echo-data": {
+    "prefix": "t:echo",
+    "body": "{{ ${1:\\$data} }}",
+    "description": "#echo data"
+  },
+  "inject service": {
+    "prefix": "t:inject",
+    "body": "#inject('${1:name}', '${2:class}')",
+    "description": "#inject Service"
+  },
+  "loop": {
+    "prefix": "t:loop",
+    "body": [
+     "#loop (${1:\\$collection} as ${2:\\$item})",
+      "    $3",
+      "#endloop"
+     
+    ],
+    "description": "$loop block"
+  },
+  "stop": {
+    "prefix": "t:stop",
+    "body": "#stop(\\$name == $1)",
+    "description": "stop"
+  },
+  "jump": {
+    "prefix": "t:jump",
+    "body": "#jump(\\$name == $1)",
+    "description": "jump"
+  }, 
+}

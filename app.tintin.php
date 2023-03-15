@@ -3,7 +3,6 @@
 #block("title", "The page title")
 
 #block("content")
-
 	#if(true)
 		// Do Something
 	#endif
