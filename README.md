@@ -9,8 +9,8 @@ Bow Tintin snippets and syntax highlighting support for Visual Studio Code.
 Open `Preferences` -> `Settings`
 
 ```json
-"emmet.triggerExpansionOnTab": true, // enable tab to expanse emmet tags
-"tintin.format.enable": true,         // if you would like to enable Tintin format
+"emmet.triggerExpansionOnTab": true,
+"tintin.format.enable": true,
 ```
 
 Specific settings for Tintin language
