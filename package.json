@@ -2,7 +2,7 @@
     "name": "bow-tintin",
     "displayName": "Bow Tintin",
     "description": "Bow Tintin Language Support (https://github.com/bowphp/tintin).",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "author": "Franck DAKIA",
     "icon": "icons/bow.jpeg",
     "publisher": "papac",
